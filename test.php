@@ -1,13 +1,7 @@
 <?php 
+$to = 'mmoud2031@gmail.com';
+$title= 'hi';
+$body = 'from back end test.php';
+$header = 'From: support@memo.com' . '\n' . 'CC:mmoud2031@gmail.com';
+mail($to,$title,$body,$header);
 
-include './connect.php';
-$table = "users";
-// $name = filterRequest("namerequest");
-$data = array( 
-"name" => "mahmoud",
-"email" => "memo@gmail.com",
-"phone" => "324234",
-"password" => "hdfjksdhfsdk",
-"vrefiycode" => "32432",       
-);
-$count = insertData($table , $data);

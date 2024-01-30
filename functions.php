@@ -147,6 +147,15 @@ function checkAuthenticate()
     } else {
         exit;
     }
-
-    // End 
 }
+
+ function printFaliure($errorMsg = 'none'){
+    echo json_encode(array("status" => "failure", "message" => $errorMsg));
+ }
+
+ function sendEmail($to,$title,$body){
+
+    $header = 'From: support@memo.com' . '\n' . 'CC:mmoud2031@gmail.com';
+
+    mail($to,$title,$body,$header);
+ }
