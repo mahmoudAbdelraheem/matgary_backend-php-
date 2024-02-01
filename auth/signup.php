@@ -5,7 +5,8 @@ include "../connect.php";
 $name = filterRequest('name');
 $email = filterRequest('email');
 $phone = filterRequest('phone');
-$pass = sha1('password'); //! sha1 for encrype password
+$pass = filterRequest('password'); 
+//$pass = sha1($_POST['password']); //! sha1 for encrype password
  //? random vrefiy code form 5 digits 
 $vrefiyCode = rand(10000,99999);
 

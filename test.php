@@ -6,6 +6,26 @@
 // mail($to,$title,$body,$header);
 
 
+// include "connect.php";
+
+// getAllData("users" ,"1=1");
+
+
+
 include "connect.php";
 
-getAllData("users" ,"1=1");
+$email = filterRequest('email');
+$pass = sha1('password'); //! sha1 for encrype password
+
+
+$stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` =?");
+
+$stmt->execute(array($email,$pass));
+
+$count =$stmt->rowCount();
+
+if($count >0){
+    echo json_encode(array("status" => "success"));
+}else {
+    printFaliure('Email Or password dose not Existing');
+}

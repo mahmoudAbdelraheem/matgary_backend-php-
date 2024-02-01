@@ -148,11 +148,25 @@ function checkAuthenticate()
         exit;
     }
 }
-
+    //? print func
  function printFaliure($errorMsg = 'none'){
     echo json_encode(array("status" => "failure", "message" => $errorMsg));
  }
+ function printSuccess($successMsg = 'done'){
+    echo json_encode(array("status" => "success", "message" =>$successMsg));
+ }
 
+ function printResult($count ,$successMsg ='done'  , $errorMsg = 'none'){
+    if ($count>0){
+        printSuccess($successMsg);
+    }else {
+        printFaliure($errorMsg);
+    }
+ }
+
+
+
+ //? send vreification code to user email
  function sendEmail($to,$title,$body){
 
     $header = 'From: support@memo.com' . '\n' . 'CC:mmoud2031@gmail.com';
