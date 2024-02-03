@@ -12,15 +12,20 @@
 
 
 
+// include "connect.php";
+
+// $email = filterRequest('email');
+// $pass = sha1('password'); //! sha1 for encrype password
+
+
+
 include "connect.php";
 
-$email = filterRequest('email');
-$pass = sha1('password'); //! sha1 for encrype password
+$pass = sha1($_POST['password']);
 
+$stmt = $con->prepare("SELECT * FROM `users` WHERE `id` = '19' OR `password` = ?");
 
-$stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` =?");
-
-$stmt->execute(array($email,$pass));
+$stmt->execute(array($pass));
 
 $count =$stmt->rowCount();
 
