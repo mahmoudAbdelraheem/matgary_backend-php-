@@ -4,7 +4,8 @@ include "../connect.php";
 
 $email = filterRequest('email');
 $pass = filterRequest('password');
-//$pass = sha1($_POST['password']); //! sha1 for encrype password
+
+//$hashedPassword = password_hash($pass, PASSWORD_BCRYPT); //! sha1 for encrype password
 
 //?
 // $stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` =? AND `approve` = 1");
