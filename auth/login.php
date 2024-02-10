@@ -22,4 +22,4 @@ $pass = filterRequest('password');
 
 //? useing getdata func
 
-getData("users" ,"email = ? AND password =? AND approve =1" , array($email , $pass) );
+getData("users" ,"user_email = ? AND user_password =? AND user_approve =1" , array($email , $pass) );

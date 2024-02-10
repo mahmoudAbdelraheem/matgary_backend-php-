@@ -6,7 +6,7 @@ $email = filterRequest('email');
 $vrefiyCode = filterRequest('vrefiycode');
 
 
-$stmt = $con->prepare("SELECT * FROM `users` WHERE `email` =? AND `vrefiycode` = ?");
+$stmt = $con->prepare("SELECT * FROM `users` WHERE `user_email` =? AND `user_vrefiycode` = ?");
 
 $stmt->execute(array($email , $vrefiyCode));
 
@@ -17,7 +17,7 @@ if($count >0 ){
     $data = array(
         "approve"=>"1",
     );
-    updateData('users' ,$data ,"email = '$email'");
+    updateData('users' ,$data ,"user_email = '$email'");
     
 }else {
     printFaliure("Your Vrefiy Code Not Correct! Please Enter Vaild Code.");

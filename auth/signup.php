@@ -12,7 +12,7 @@ $pass = filterRequest('password');
 $vrefiyCode = rand(10000,99999);
 
 
-$stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? OR `phone` =?");
+$stmt = $con->prepare("SELECT * FROM `users` WHERE `user_email` = ? OR `user_phone` =?");
 
 $stmt->execute(array($email,$phone));
 
@@ -22,11 +22,11 @@ if($count >0){
     printFaliure('Email Or Phone is Existing');
 }else {
     $data = array(
-        "name"=>$name,
-        "email"=> $email,
-        "phone"=>$phone,
-        "password"=>$pass,
-        "vrefiycode"=>$vrefiyCode,
+        "user_name"=>$name,
+        "user_email"=> $email,
+        "user_phone"=>$phone,
+        "user_password"=>$pass,
+        "user_vrefiycode"=>$vrefiyCode,
         
     );
     //? send vrefiy code to user email
