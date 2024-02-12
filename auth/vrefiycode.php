@@ -15,7 +15,7 @@ $count = $stmt->rowCount();
 if($count >0 ){
     //? update user approve to 1 if the vrefiy code is correct
     $data = array(
-        "approve"=>"1",
+        "user_approve"=>"1",
     );
     updateData('users' ,$data ,"user_email = '$email'");
     

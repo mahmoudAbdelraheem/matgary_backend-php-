@@ -8,7 +8,7 @@ $pass = filterRequest('password');
 //$hashedPassword = password_hash($pass, PASSWORD_BCRYPT); //! sha1 for encrype password
 
 //?
-// $stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` =? AND `approve` = 1");
+// $stmt = $con->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` =? AND `user_approve` = 1");
 
 // $stmt->execute(array($email,$pass));
 
@@ -22,4 +22,4 @@ $pass = filterRequest('password');
 
 //? useing getdata func
 
-getData("users" ,"user_email = ? AND user_password =? AND user_approve =1" , array($email , $pass) );
+getData("users", "user_email = ? AND user_password =?", array($email, $pass));
