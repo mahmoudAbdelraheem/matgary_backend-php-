@@ -35,9 +35,9 @@ function getAllData($table, $where = null, $values = null , $json = true)
     return $count;
     }else {
         if($count > 0){
-            return $data;
+            return (array("status" => "success" , "data" =>$data));
         }else {
-            echo json_encode(array("status" => "failure"));
+            return (array("status" => "failure"));
         } 
     }
 }
