@@ -8,7 +8,7 @@ $city= filterRequest('city');
 $street= filterRequest('street');
 //? for user address location
 $lat= filterRequest('lat');
-$lang= filterRequest('lang');
+$lang= filterRequest('long');
 
 $data = array(
     "address_name" => $addressName,
