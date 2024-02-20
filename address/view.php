@@ -3,6 +3,6 @@
 
 include "../connect.php";
 
-$userId= filterRequest('userId');
+$userId= filterRequest('userid');
 
-updateData("address",$data,"address_user_id =$userId");
+getAllData("address","address_user_id =$userId");
