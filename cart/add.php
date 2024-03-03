@@ -5,7 +5,7 @@ include '../connect.php';
 $userId = filterRequest('userid');
 $itemId = filterRequest('itemid');
 
-$count = getData("cart","cart_user_id  = '$userId' AND cart_item_id = '$itemId'",null , false);
+$count = getData("cart","cart_user_id  = '$userId' AND cart_item_id = '$itemId' AND cart_order_id =0",null , false);
 
 // if($count> 0 ){
 //     //? update item count
