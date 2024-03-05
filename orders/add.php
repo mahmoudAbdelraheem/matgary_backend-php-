@@ -42,6 +42,7 @@ $data = array(
     'order_price' => $orderPrice,
     'order_total_price' => $orderTotalPrice,
     'order_coupon' => $couponId,
+    'order_coupon_discount' => $couponDiscount,
 );
 
 $count = insertData('orders' , $data, false);
