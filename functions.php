@@ -206,3 +206,53 @@ function checkAuthenticate()
 
     mail($to,$title,$body,$header);
  }
+
+
+ //! ----------------------------------------------
+ //? this function used to send a notification  
+ //! ----------------------------------------------
+
+ function sendGCM($title, $message, $topic, $pageid, $pagename)
+{
+
+
+    $url = 'https://fcm.googleapis.com/fcm/send';
+
+    $fields = array(
+        "to" => '/topics/' . $topic,
+        'priority' => 'high',
+        'content_available' => true,
+
+        'notification' => array(
+            "body" =>  $message,
+            "title" =>  $title,
+            "click_action" => "FLUTTER_NOTIFICATION_CLICK",
+            "sound" => "default"
+
+        ),
+        'data' => array(
+            "pageid" => $pageid,
+            "pagename" => $pagename
+        )
+
+    );
+
+
+    $fields = json_encode($fields);
+    $headers = array(
+        'Authorization: key=' . "AAAAn-8dtOY:APA91bFHKuznph5smA28yxh7hGTkNYMI1X8q7QECx8mTv1CIvaijmV3pTP2z62AAJyJHmR__RP6scwGC5-eLOk8E3m8iX3fz6sKAMBeoGTBIPV6eUTXHl29KcfZs-L4FcG1gMkF1Qadf",
+        'Content-Type: application/json'
+    );
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+    
+}
