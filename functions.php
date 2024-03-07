@@ -256,3 +256,15 @@ function checkAuthenticate()
     return $result;
     
 }
+
+function sendAndInsertNotify($userId,$title,$body,$topic,$pageId,$pageName){
+    sendGCM($title, $body , $topic , $pageId,$pageName);
+    global $con;
+    $stmt = $con->prepare("INSERT INTO `notification` (`notification_user_id`, `notification_title`, `notification_body`) VALUES (? ,? ,?)");
+    $stmt->execute(array($userId,$title,$body));
+    
+    $count = $stmt->rowCount();
+    return $count;
+
+
+}
