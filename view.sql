@@ -12,7 +12,7 @@ WHERE item_id NOT IN (SELECT items1view.item_id FROM items1view
 INNER JOIN favorite ON favorite.favorite_items_id = items1view.item_id AND favorite.favorite_users_id = 25)
 
 
-/* user favorite items view */
+/* user favorite my favorite view*/
 
 CREATE OR REPLACE view myfavorite AS
 SELECT favorite.* ,items.*, users.id FROM favorite
@@ -24,4 +24,16 @@ CREATE OR REPLACE VIEW cartview AS
 SELECT SUM(items.item_price - (items.item_price * items.item_discount /100)) AS itemprice ,COUNT(cart_item_id) AS itemcount , cart.* , items.* FROM cart
 INNER JOIN items ON items.item_id =cart.cart_item_id
 WHERE cart_order_id =0
-GROUP BY cart.cart_item_id , cart.cart_user_id
+GROUP BY cart.cart_item_id , cart.cart_user_id , cart.cart_order_id
+
+/*user orders view*/
+CREATE OR REPLACE VIEW orderview AS
+SELECT orders.* , address.* FROM orders
+LEFT JOIN address ON address.address_id = orders.order_user_address
+
+/* cart user order details*/
+CREATE OR REPLACE VIEW ordersdetaisview AS
+SELECT SUM(items.item_price - (items.item_price * items.item_discount /100)) AS itemprice ,COUNT(cart_item_id) AS itemcount , cart.* , items.* FROM cart
+INNER JOIN items ON items.item_id =cart.cart_item_id
+WHERE cart_order_id !=0
+GROUP BY cart.cart_item_id , cart.cart_user_id , cart.cart_order_id
