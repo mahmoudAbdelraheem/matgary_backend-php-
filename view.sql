@@ -40,8 +40,11 @@ GROUP BY cart.cart_item_id , cart.cart_user_id , cart.cart_order_id
 
 /*items top selling view*/
 CREATE OR REPLACE VIEW itemstopselling AS
-SELECT COUNT(cart_id) AS itemscount , cart.* , items.* FROM cart
-INNER JOIN items ON items.item_id = cart.cart_item_id
+SELECT COUNT(cart_id) AS sellingtime,
+items1view.item_price - (items1view.item_price * items1view.item_discount /100) AS itemdiscountprice, 
+cart.*, items1view.* FROM cart
+INNER JOIN items1view ON items1view.item_id = cart.cart_item_id
 WHERE cart.cart_order_id !=0
 GROUP BY cart_item_id 
+
 

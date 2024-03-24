@@ -62,6 +62,31 @@ function getData($table, $where = null, $values = null,$json = true)
     }    
 }
 
+//? get and return data
+function getReturnData($table, $where = null, $values = null,$json = true)
+{
+    global $con;
+    $data = array();
+    $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
+    $stmt->execute($values);
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    $count  = $stmt->rowCount();
+    if($json ==true){
+        if ($count > 0) {
+            echo json_encode(array("status" => "success", "data" => $data));
+        } else {
+            echo json_encode(array("status" => "failure"));
+        }
+    }else {
+        if($count > 0){
+            return (array("status" => "success" , "data" =>$data));
+        }else {
+            return (array("status" => "failure"));
+        } 
+    }    
+}
+
+
 //? insert into table
 function insertData($table, $data, $json = true)
 {
