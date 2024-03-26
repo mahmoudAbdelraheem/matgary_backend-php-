@@ -12,7 +12,7 @@ $orderPrice = filterRequest('orderprice');
 $couponId = filterRequest('couponid');
 $couponDiscount = filterRequest('coupondiscount');
 
-if($orderType = '1'){
+if($orderType == '1'){
     $shippingPrice = 0;
 }
 
