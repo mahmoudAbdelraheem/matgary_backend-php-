@@ -6,7 +6,7 @@ $email = filterRequest('email');
 
 $vrefiyCode = rand(10000 , 99999);
 
-$stmt  = $con->prepare("SELECT * FROM `users` WHERE `user_email` = ?");
+$stmt  = $con->prepare("SELECT * FROM `delivery` WHERE `delivery_email` = ?");
 
 $stmt->execute(array($email));
 
@@ -20,10 +20,10 @@ if($count > 0){
 
     //? send new email vrefiy code and save it in database
     $data = array(
-        "user_vrefiycode"=> $vrefiyCode,
+        "delivery_vrefiycode"=> $vrefiyCode,
     );
 
     //? json =false for make sure that updata data func don't print eny thing
-    updateData("users",$data ,"user_email = '$email'" , false);
+    updateData("delivery",$data ,"delivery_email = '$email'" , false);
 
 }

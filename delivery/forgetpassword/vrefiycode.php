@@ -6,7 +6,7 @@ $email = filterRequest('email');
 $vrefiyCode = filterRequest('vrefiycode');
 
 
-$stmt = $con->prepare("SELECT * FROM `users` WHERE `user_email` =? AND `user_vrefiycode` = ?");
+$stmt = $con->prepare("SELECT * FROM `delivery` WHERE `delivery_email` =? AND `delivery_vrefiycode` = ?");
 
 $stmt->execute(array($email , $vrefiyCode));
 
