@@ -1,6 +1,6 @@
 <?php
 
-include "../connect.php";
+include "../../connect.php";
 
 $name = filterRequest('name');
 $email = filterRequest('email');
