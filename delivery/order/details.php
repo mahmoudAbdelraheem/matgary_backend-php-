@@ -1,12 +1,10 @@
 <?php
 
+include "../../connect.php";
 
-//? get user canseld order
-include '../connect.php';
+$CartOrderId = filterRequest('id');
 
-$userId = filterRequest("id");
-
-getAllData('orderview' ,"order_user_id = '$userId' AND order_status = 4");
+getAllData('ordersdetaisview',"cart_order_id = '$CartOrderId'");
 
 //? 0 => pending approval , 
 //? 1 => order approve and prepare, 

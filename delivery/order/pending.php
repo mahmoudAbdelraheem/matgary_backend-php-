@@ -1,11 +1,8 @@
 <?php
-//? get user on demand orders
+//? get all pending orders
 include "../../connect.php";
 
-$deliveryId = filterRequest('id');
-
- getAllData('orderview' , "1=1 AND order_status = 3 AND order_delivery_id = $deliveryId");
-
+getAllData('orderview' , "order_status = 1");
 
 //? 0 => pending approval , 
 //? 1 => order approve and prepare, 

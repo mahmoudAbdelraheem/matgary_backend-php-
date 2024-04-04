@@ -3,5 +3,5 @@
 //? get user archived order
 include "../../connect.php";
 
- getAllData('orderview' , "1=1 AND order_status = 2");
+ getAllData('orderview' , "1=1 AND order_status = 3");
 

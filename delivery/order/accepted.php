@@ -1,13 +1,12 @@
 <?php
-//? get user on demand orders
+//? get all acceptedorders
 include "../../connect.php";
 
 $deliveryId = filterRequest('id');
 
- getAllData('orderview' , "1=1 AND order_status = 3 AND order_delivery_id = $deliveryId");
+ getAllData('orderview' , "order_status = 2 AND order_delivery_id = $deliveryId");
 
-
-//? 0 => pending approval , 
+ //? 0 => pending approval , 
 //? 1 => order approve and prepare, 
 //? 2 => on delivery order , 
 //? 3 => archive order and , 
